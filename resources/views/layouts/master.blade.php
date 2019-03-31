@@ -235,7 +235,7 @@
               <a class="nav-link" href="{{url('/pajak')}}">PPN</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/typography.html">Tambah Barang</a>
+              <a class="nav-link" href="{{url('/barang')}}">Tambah Barang</a>
             </li>
           </ul>
         </div>

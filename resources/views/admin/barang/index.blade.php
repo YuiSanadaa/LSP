@@ -7,7 +7,7 @@
 			<hr>
 			<div class="col-sm-12">
 				<div class="form-group">
-					<a href="#" class="btn btn-success float-right">Tambah Data</a>
+					<a href="{{route('barang.create')}}" class="btn btn-success float-right">Tambah Data</a>
 				</div>
 				<br>
 				<div class="table-responsive form-group mt-4">

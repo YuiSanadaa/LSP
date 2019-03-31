@@ -1,26 +1,26 @@
 @extends('layouts.master')
 @section('content')
-<div class="card">
+<div class="card col">
   <div class="card-body">
-    <h4 class="card-title">Horizontal Two column</h4>
-    <form class="form-sample">
-      <p class="card-description">
-        Personal info
-      </p>
+    <h1><center>Tambah Barang</center></h1>
+    <hr>
+    <br>
+    <form class="form-sample" method="POST" action="{{route('barang.store')}}">
+      @csrf
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">First Name</label>
+            <label class="col-sm-3 col-form-label">Nama Barang</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input type="text" name="nambar" class="form-control">
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Last Name</label>
+            <label class="col-sm-3 col-form-label">Kode Barang</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input type="text" name="kodbar" class="form-control">
             </div>
           </div>
         </div>
@@ -28,20 +28,21 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Gender</label>
+            <label class="col-sm-3 col-form-label">Unit</label>
             <div class="col-sm-9">
-              <select class="form-control">
-                <option>Male</option>
-                <option>Female</option>
+              <select class="form-control" name="id_unit">                
+                @foreach($semuaunit as $unit)
+                <option value="{{$unit->id}}">{{$unit->unit}}</option>
+                @endforeach                
               </select>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Date of Birth</label>
+            <label class="col-sm-3 col-form-label">Expired</label>
             <div class="col-sm-9">
-              <input class="form-control" placeholder="dd/mm/yyyy">
+              <input type="date" name="ekspayer" class="form-control" placeholder="dd/mm/yyyy">
             </div>
           </div>
         </div>
@@ -49,100 +50,64 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Category</label>
+            <label class="col-sm-3 col-form-label">Kategori</label>
             <div class="col-sm-9">
-              <select class="form-control">
-                <option>Category1</option>
-                <option>Category2</option>
-                <option>Category3</option>
-                <option>Category4</option>
+              <select class="form-control" name="id_kategori">
+                @foreach($semuakategori as $kategori)
+                <option value="$kategori->id">{{$kategori->kategori}}</option>
+                @endforeach
               </select>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Membership</label>
+            <label class="col-sm-3 col-form-label">PPN</label>
+            @foreach($semuappn as $ppn)
             <div class="col-sm-4">
               <div class="form-radio">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked=""> Free
-                  <i class="input-helper"></i></label>
-                </div>
+                  <input type="radio" class="form-check-input" name="id_ppn" id="membershipRadios1" value="{{$ppn->id}}" checked=""> {{$ppn->ppn}}
+                  <i class="input-helper"></i>
+                </label>
               </div>
-              <div class="col-sm-5">
-                <div class="form-radio">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2"> Professional
-                    <i class="input-helper"></i></label>
-                  </div>
-                </div>
-              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">stock</label>
+            <div class="col-sm-9">
+              <input type="number" name="stok" class="form-control" style="width: 100px">
             </div>
           </div>
-          <p class="card-description">
-            Address
-          </p>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Address 1</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">State</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
+        </div>                
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Harga Awal</label>
+            <div class="col-sm-9">
+              <input type="text" name="hargaA" class="form-control">
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Address 2</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Postcode</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Harga Akhir</label>
+            <div class="col-sm-9">
+              <input type="text" name="HargaB" class="form-control">
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">City</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Country</label>
-                <div class="col-sm-9">
-                  <select class="form-control">
-                    <option>America</option>
-                    <option>Italy</option>
-                    <option>Russia</option>
-                    <option>Britain</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+        </div>
+      </div>
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Tambah</button>
+        </div>
       </div>
     </div>
-    @endsection
+  </form>
+</div>
+</div>  
+@endsection

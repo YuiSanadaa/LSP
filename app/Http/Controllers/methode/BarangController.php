@@ -20,7 +20,7 @@ class BarangController extends Controller
     {
         $data['semuabarang'] = Barang::All();
         $data['semuaunit'] = Unit::All();
-        $data['Kategori'] = Kategori::All();
+        $data['semuakategori'] = Kategori::All();
         $data['semuappn'] = Ppn::All();
         return view('admin.barang.index')->with($data);
     }
@@ -32,7 +32,11 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('admin.barang.create');
+        $data['semuabarang'] = Barang::All();
+        $data['semuaunit'] = Unit::All();
+        $data['semuakategori'] = Kategori::All();
+        $data['semuappn'] = Ppn::All();
+        return view('admin.barang.create')->with($data);
     }
 
     /**
@@ -41,9 +45,18 @@ class BarangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $add = new Barang;
+        $add->kodebarang = $r->input('kodbar');
+        $add->namabarang = $r->input('nambar'); 
+        $add->stock = $r->input('stok');
+        $add->expired = $r->input('ekspayer');
+        $add->id_kategori = $r->input('id_kategori');
+        $add->id_unit = $r->input('id_unit');
+        $add->id_ppn = $r->input('id_ppn');
+
+        $add->save();
     }
 
     /**

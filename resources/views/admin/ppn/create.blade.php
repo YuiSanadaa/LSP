@@ -10,7 +10,7 @@
 					@csrf
 					<div class="form-group">
 						<label for="exampleInputName1">Jumlah Pajak Per Satuan</label>
-						<input type="number" name="nominal" class="form-control" id="exampleInputName1" style="width: 10%" placeholder="10%">
+						<input type="number" name="nominal" class="form-control" id="exampleInputName1" style="width: 10%" placeholder="10%" autofocus>
 					</div>
 					<button type="submit" class="btn btn-success mr-2">Submit</button>
 					<button class="btn btn-light">Cancel</button>
