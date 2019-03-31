@@ -8,5 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Kategori extends Eloquent
 {
-    //
+    
+    protected $connection = 'mongodb';
+    protected $collection = 'kategoris';
 }

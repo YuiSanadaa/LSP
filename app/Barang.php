@@ -8,16 +8,21 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Barang extends Eloquent
 {
+
+    protected $connection = 'mongodb';
+    protected $collection = 'barangs';
+
   public function kategori()
+
     {
-        return $this->belongsTo(App\Kategori::class);
+        return $this->belongsTo(Kategori::class);
     }
 
     public function unit(){
-    	return $this->belongsTo(App\Unit::class);
+    	return $this->belongsTo(Unit::class);
     }
 
-    public function ppns(){
-    	return $this->belongsTo(App\Ppn::class);
+    public function ppn(){
+    	return $this->belongsTo(Ppn::class);
     }
 }

@@ -8,5 +8,6 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Informasi extends Eloquent
 {
-    
+    protected $connection = 'mongodb';
+    protected $collection = 'informasis';
 }

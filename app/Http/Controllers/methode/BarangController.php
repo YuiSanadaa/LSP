@@ -29,9 +29,6 @@ class BarangController extends Controller
     public function index()
     {
         $data['semuabarang'] = Barang::All();
-        $data['semuaunit'] = Unit::All();
-        $data['semuakategori'] = Kategori::All();
-        $data['semuappn'] = Ppn::All();
         return view('admin.barang.index')->with($data);
     }
 
@@ -116,6 +113,8 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $table = Barang::find($id);        
+        $table->delete();//delete table
+        return back();
     }
 }

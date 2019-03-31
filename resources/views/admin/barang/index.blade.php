@@ -22,26 +22,25 @@
 								<th>PPN</th>
 								<th>Harga Beli</th>
 								<th>Harga Jual</th>
-								<th>deksripsi</th>
 								<th class="text-center">Opsi</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($semuabarang as $barang)
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{$barang->kodebarang}}</td>
+								<td>{{$barang->namabarang}}</td>
+								<td>{{$barang->stock}}</td>
+								<td>{{$barang->kategori}}</td>
+								<td>{{$barang->unit}}</td>
+								<td>{{$barang->ppn}}</td>
+								<td>{{$barang->hargaawal}}</td>
+								<td>{{$barang->hargaakhir}}</td>
 								<td class="text-center">
 									<a href="#" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light">
 										Edit
 									</a>
-									<form action="#" method="post" class="d-inline-block">
+									<form action="{{route('barang.destroy',$barang->id)}}" method="post" class="d-inline-block">
 										{{ method_field('DELETE') }}
 										{{csrf_field() }}
 										<button type="submit" class="btn btn-warning waves-effect">Delete
@@ -49,6 +48,7 @@
 									</form>
 								</td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
