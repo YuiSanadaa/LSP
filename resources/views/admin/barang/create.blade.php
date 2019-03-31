@@ -12,7 +12,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Nama Barang</label>
             <div class="col-sm-9">
-              <input type="text" name="nambar" class="form-control">
+              <input type="text" name="nambar" class="form-control" required>
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Kode Barang</label>
             <div class="col-sm-9">
-              <input type="text" name="kodbar" class="form-control">
+              <input type="text" name="kodbar" class="form-control" required>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Unit</label>
             <div class="col-sm-9">
-              <select class="form-control" name="id_unit">                
+              <select class="form-control" name="id_unit" required>
                 @foreach($semuaunit as $unit)
                 <option value="{{$unit->id}}">{{$unit->unit}}</option>
                 @endforeach                
@@ -42,7 +42,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Expired</label>
             <div class="col-sm-9">
-              <input type="date" name="ekspayer" class="form-control" placeholder="dd/mm/yyyy">
+              <input type="date" name="ekspayer" class="form-control" placeholder="dd/mm/yyyy" required>
             </div>
           </div>
         </div>
@@ -52,9 +52,9 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Kategori</label>
             <div class="col-sm-9">
-              <select class="form-control" name="id_kategori">
+              <select class="form-control" name="id_kategori" required>
                 @foreach($semuakategori as $kategori)
-                <option value="$kategori->id">{{$kategori->kategori}}</option>
+                <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
                 @endforeach
               </select>
             </div>
@@ -67,7 +67,7 @@
             <div class="col-sm-4">
               <div class="form-radio">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="id_ppn" id="membershipRadios1" value="{{$ppn->id}}" checked=""> {{$ppn->ppn}}
+                  <input type="radio" class="form-check-input" name="id_ppn" id="id_ppn" value="{{$ppn->id}}" required> {{$ppn->ppn}}
                   <i class="input-helper"></i>
                 </label>
               </div>
@@ -77,9 +77,9 @@
         </div>        
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">stock</label>
+            <label class="col-sm-3 col-form-label">Stock</label>
             <div class="col-sm-9">
-              <input type="number" name="stok" class="form-control" style="width: 100px">
+              <input type="number" name="stok" class="form-control" style="width: 100px" required>
             </div>
           </div>
         </div>                
@@ -87,7 +87,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Harga Awal</label>
             <div class="col-sm-9">
-              <input type="text" name="hargaA" class="form-control">
+              <input type="text" name="awal" id="awal" class="form-control" required>
             </div>
           </div>
         </div>
@@ -95,7 +95,8 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Harga Akhir</label>
             <div class="col-sm-9">
-              <input type="text" name="HargaB" class="form-control">
+              <input type="text" name="akhir" id="akhir" class="form-control" disabled="">
+              <small class="text-danger">*Harga Akhir Otomatis dibuat oleh sistem</small>
             </div>
           </div>
         </div>
@@ -106,8 +107,7 @@
           <button type="submit" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Tambah</button>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
-</div>  
 @endsection

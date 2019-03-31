@@ -77,4 +77,5 @@
         </main>
     </div>
 </body>
+@yield('foot-content')
 </html>

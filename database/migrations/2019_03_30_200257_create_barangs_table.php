@@ -18,6 +18,8 @@ class CreateBarangsTable extends Migration
             $table->string('kodebarang');
             $table->string('namabarang');
             $table->integer('stock');
+            $table->integer('hargaawal');
+            $table->integer('hargaakhir');
             $table->datetime('expired');
             $table->unsignedInteger('id_kategori');
             $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
@@ -25,9 +27,6 @@ class CreateBarangsTable extends Migration
             $table->foreign('id_unit')->references('id')->on('units')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('id_ppn');
             $table->foreign('id_ppn')->references('id')->on('ppns')->onDelete('cascade')->onUpdate('cascade');
-
-
-
             $table->timestamps();
         });
     }
