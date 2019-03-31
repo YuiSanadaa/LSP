@@ -4,6 +4,8 @@ namespace App\Http\Controllers\methode;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Maklad\Permission\Models\Role;
 use App\User;
 
 class KaryawanController extends Controller
@@ -16,6 +18,7 @@ class KaryawanController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:admin','permission:karyawan']);
     }
     
     /**
@@ -36,7 +39,8 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('admin.karyawan.create');
+        $roles = Role::pluck('name','name')->all();        
+        return view('admin.karyawan.create',compact('roles'));
     }
 
     /**
@@ -47,15 +51,17 @@ class KaryawanController extends Controller
      */
     public function store(Request $r)
     {
-        $add = new User;
-       $add->name = $r->input('nama');
-       $add->username = $r->input('user');
-       $add->telp = $r->input('no');
-       $add->alamat = $r->input('alm');
-       $add->password = bcrypt($r->input('pwd'));
+        $input['name'] = $r->input('nama');
+        $input['username'] = $r->input('user');
+        $input['telp'] = $r->input('no');
+        $input['alamat'] = $r->input('alm');        
+        $input['password'] = Hash::make($r->input('pwd'));
 
-       $add->save();
-       return redirect('karyawan');
+
+        $user = User::create($input);
+        $user->assignRole($r->input('roles'));
+
+        return redirect('karyawan');
    }
 
     /**

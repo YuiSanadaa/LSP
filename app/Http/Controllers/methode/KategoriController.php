@@ -15,6 +15,8 @@ class KategoriController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:admin-barang','role:admin','permission:kategori']);
+        
     }
     
     /**
@@ -47,7 +49,7 @@ class KategoriController extends Controller
     public function store(Request $r)
     {
          $add = new Kategori;
-       $add->kategori = $r->input('kate');
+       $add->nama = $r->input('kate');
        $add->save();
        return redirect('kategori');
     }
@@ -85,7 +87,7 @@ class KategoriController extends Controller
     public function update(Request $r, $id)
     {
         $edit = Kategori::find($id);
-        $edit->kategori = $r->input('kate');
+        $edit->nama = $r->input('kate');
        $edit->save();
        return redirect('kategori');
 

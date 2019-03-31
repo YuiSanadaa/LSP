@@ -27,7 +27,16 @@ Route::resource('karyawan', 'methode\KaryawanController');
 Route::resource('pajak', 'methode\PpnController');
 Route::resource('kategori', 'methode\KategoriController');
 Route::resource('unit', 'methode\UnitController');
-Route::resource('barang', 'methode\BarangController');		
+Route::resource('barang', 'methode\BarangController');	
+Route::prefix('barang')->group(function () {
+Route::get('/{id}/stock', 'methode\BarangController@addstock')->name('barang.addstock');
+Route::post('/proses', 'methode\BarangController@prosesstock')->name('barang.save');
+});
+Route::prefix('pos')->group(function () {
+	Route::get('/', 'methode\PosController@index');
+	});
+	Route::post('/addcart', 'methode\PosController@savetablesementara')->name('pos.addcart');
+	route::post('/addcart/tb', 'methode\PosController@transaksi')->name('pos.transaksi');
 Route::get('/logout', function () {
     Auth::logout();
 });

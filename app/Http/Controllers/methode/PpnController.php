@@ -16,6 +16,8 @@ class PpnController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:admin-barang','role:admin','permission:ppn']);
+
     }
     
     /**
@@ -47,11 +49,11 @@ class PpnController extends Controller
      */
     public function store(Request $r)
     {
-       $add = new Ppn;
-       $add->ppn = $r->input('nominal');
-       $add->save();
-       return redirect('pajak');
-   }
+     $add = new Ppn;
+     $add->ppn = $r->input('nominal');
+     $add->save();
+     return redirect('pajak');
+ }
 
     /**
      * Display the specified resource.
@@ -85,12 +87,12 @@ class PpnController extends Controller
      */
     public function update(Request $r, $id)
     {
-       $edit = Ppn::find($id);
-       $edit->ppn = $r->input('nominal');
-       $edit->save();
-       return redirect('pajak');
+     $edit = Ppn::find($id);
+     $edit->ppn = $r->input('nominal');
+     $edit->save();
+     return redirect('pajak');
 
-   }
+ }
 
     /**
      * Remove the specified resource from storage.

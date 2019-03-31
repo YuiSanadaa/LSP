@@ -23,7 +23,7 @@
 							@foreach($semuakategori as $kategori)
 							<tr>
 								<td>{{$loop->iteration}}</td>
-								<td>{{$kategori->kategori}}</td>
+								<td>{{$kategori->nama}}</td>
 								<td class="text-center">
 									<a href="{{route('kategori.edit',$kategori->id)}}" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light">
 										Edit

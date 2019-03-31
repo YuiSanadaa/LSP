@@ -28,6 +28,14 @@
 						<label for="exampleTextarea1">Alamat</label>
 						<textarea class="form-control" name="alm" id="exampleTextarea1" rows="2"></textarea>
 					</div>
+					<div class="form-group">
+						<label for="exampleTextarea1">Role</label>						 
+						 <select name="roles[]" class="form-control" multiple>
+						 	@foreach($roles as $role)
+						 	<option value="{{$role}}">{{$role}}</option>
+						 	@endforeach
+						 </select>
+					</div>
 					<button type="submit" class="btn btn-success mr-2">Submit</button>
 					<button class="btn btn-light">Cancel</button>
 				</form>

@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 
-class Barang extends Eloquent
+class TransaksiSementara extends Eloquent
 {
-
     protected $connection = 'mongodb';
-    protected $collection = 'barangs';
+    protected $collection = 'transaksisementaras';
 
     protected $fillable = [
         'kodebarang', 'namabarang','stock','hargaawal','hargaakhir','expired'

@@ -16,17 +16,39 @@ class DatabaseSeeder extends Seeder
         app()['cache']->forget('maklad.permission.cache');
         
         // create permissions
-        Permission::firstOrCreate(['name' => 'edit articles']);
-        Permission::firstOrCreate(['name' => 'delete articles']);
-        Permission::firstOrCreate(['name' => 'publish articles']);
-        Permission::firstOrCreate(['name' => 'unpublish articles']);
+        Permission::firstOrCreate(['name' => 'informasi']);
+
+        Permission::firstOrCreate(['name' => 'karyawan']);
+
+        Permission::firstOrCreate(['name' => 'kategori']);
+
+        Permission::firstOrCreate(['name' => 'unit']);
+
+        Permission::firstOrCreate(['name' => 'ppn']);
+        
+        Permission::firstOrCreate(['name' => 'barang']);
+        
+         Permission::firstOrCreate(['name' => 'pos']);         
         
         // create roles and assign existing permissions
-        $role = Role::firstOrCreate(['name' => 'writer']);
-        $role->givePermissionTo('edit articles');
-        $role->givePermissionTo('delete articles');
+        $role = Role::firstOrCreate(['name' => 'kasir']);
+        $role->givePermissionTo('pos');
+
         
+        $role = Role::firstOrCreate(['name' => 'admin-barang']);
+        $role->givePermissionTo('kategori');
+        $role->givePermissionTo('unit');
+        $role->givePermissionTo('ppn');
+        $role->givePermissionTo('barang');
+
+
         $role = Role::firstOrCreate(['name' => 'admin']);
-        $role->givePermissionTo(['publish articles', 'unpublish articles']);
+       $role->givePermissionTo('informasi');
+       $role->givePermissionTo('karyawan');
+       $role->givePermissionTo('kategori');
+       $role->givePermissionTo('unit');
+       $role->givePermissionTo('ppn');
+       $role->givePermissionTo('barang');
+       $role->givePermissionTo('pos');
     }
 }

@@ -16,6 +16,8 @@ class UnitController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:admin-barang','role:admin','permission:unit']);
+
     }
     
     /**
@@ -85,11 +87,11 @@ class UnitController extends Controller
      */
     public function update(Request $r, $id)
     {
-       $edit = Unit::find($id);
-       $edit->unit = $r->input('nama');
-       $edit->save();
-       return redirect('unit');
-   }
+     $edit = Unit::find($id);
+     $edit->unit = $r->input('nama');
+     $edit->save();
+     return redirect('unit');
+ }
 
     /**
      * Remove the specified resource from storage.

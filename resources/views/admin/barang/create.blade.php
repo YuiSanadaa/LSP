@@ -32,7 +32,7 @@
             <div class="col-sm-9">
               <select class="form-control" name="id_unit" required>
                 @foreach($semuaunit as $unit)
-                <option value="{{$unit->id}}">{{$unit->unit}}</option>
+                <option value="{{$unit->unit}}">{{$unit->unit}}</option>
                 @endforeach                
               </select>
             </div>
@@ -54,7 +54,7 @@
             <div class="col-sm-9">
               <select class="form-control" name="id_kategori" required>
                 @foreach($semuakategori as $kategori)
-                <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
+                <option value="{{$kategori->nama}}">{{$kategori->nama}}</option>
                 @endforeach
               </select>
             </div>
@@ -67,7 +67,7 @@
             <div class="col-sm-4">
               <div class="form-radio">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="id_ppn" id="id_ppn" value="{{$ppn->id}}" required> {{$ppn->ppn}}
+                  <input type="radio" class="form-check-input" name="id_ppn" id="id_ppn" value="{{$ppn->ppn}}" required> {{$ppn->ppn}}
                   <i class="input-helper"></i>
                 </label>
               </div>

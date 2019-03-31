@@ -11,7 +11,7 @@
 				</div>
 				<br>
 				<div class="table-responsive form-group mt-4">
-					<table class="table table-striped table-bordered">
+					<table id="example" class="table table-striped table-bordered" style="width:100%">
 						<thead>
 							<tr>
 								<th>Kode Barang</th>
@@ -31,14 +31,17 @@
 								<td>{{$barang->kodebarang}}</td>
 								<td>{{$barang->namabarang}}</td>
 								<td>{{$barang->stock}}</td>
-								<td>{{$barang->kategori}}</td>
-								<td>{{$barang->unit}}</td>
-								<td>{{$barang->ppn}}</td>
+								<td>{{$barang->id_kategori}}</td>
+								<td>{{$barang->id_unit}}</td>
+								<td>{{$barang->id_ppn}}</td>
 								<td>{{$barang->hargaawal}}</td>
 								<td>{{$barang->hargaakhir}}</td>
 								<td class="text-center">
-									<a href="#" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light">
+									<a href="{{route('barang.edit',$barang->id)}}" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light">
 										Edit
+									</a>
+									<a href="{{route('barang.addstock',$barang->id)}}" class="btn btn-success btn-circle waves-effect waves-circle waves-float waves-light">
+										Tambah Stock
 									</a>
 									<form action="{{route('barang.destroy',$barang->id)}}" method="post" class="d-inline-block">
 										{{ method_field('DELETE') }}
@@ -56,4 +59,21 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('foot-content')
+<script type="text/javascript">
+	$(document).ready(function() {
+		var table = $('#example').DataTable( {
+			lengthChange: false,
+			buttons: [ 'excel', 'csv'],
+			exportOptions: {
+				columns: ':visible(:not(.not-export-col))'
+			}
+		} );
+
+		table.buttons().container()
+		.appendTo( '#example_wrapper .col-md-6:eq(0)' );
+	} );
+</script>
 @endsection
